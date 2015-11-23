@@ -73,27 +73,30 @@ These are the options that are currently supported:
 		function ReadingDuration(el, options) {
 			this.$el  = $(el);
 			this.el   = el;
-	        this.options = $.extend({}, $.reading.defaultOptions, options);
-			
+// http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+	        this.options = $.extend({}, $.readingImpl.defaultOptions, options);
 			
 			var duration= ($(this.options.dataLocation)
 							.text()
-							.match(/\b[^ \t\n]+\b/g)
+							.match(/\b[^ (),;.\t\n]{3,}\b/g)
 							.length)/this.options.wordPerMin * 60;
 			duration += $(this.options.dataLocation).find('img').length * 12;
 			// extend to pull CSS background-image 's, but that is quite slow with current jQuery
 			
 			this.options.injectedID="id"+new Date().getTime()/1000;
-			var text=this.options.callbacks.displayShort.apply(duration, this.options);
+			var text=this.options.callbacks.displayShort.apply(this, [duration, this.options]);
 			if(this.options.refresh ) {
 				$(this.options.target).empty();
+console.log("emptying...");
 			}	
 			$(this.options.target).append(text);
-			text=this.options.callbacks.displayLong.apply(duration, this.options);
+			text=this.options.callbacks.displayLong.apply(this, [duration, this.options]);
+			if(this.options.refresh ) {
+				$(this.options.injectedID).remove();
+			}
 			$('body').append(text);
 			
-			
-			return null; 
+			return this;	
 		}
 
 	    return new ReadingDuration(el, options);
@@ -111,8 +114,7 @@ These are the options that are currently supported:
 		refresh:0,
 		callbacks:{
 			'displayShort':f1,
-			'displayLong':f2,
-			
+			'displayLong':f2,		
 				},
 	};
 	
