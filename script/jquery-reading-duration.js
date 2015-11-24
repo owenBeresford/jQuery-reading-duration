@@ -86,8 +86,7 @@ These are the options that are currently supported:
 			this.options.injectedID="id"+new Date().getTime()/1000;
 			var text=this.options.callbacks.displayShort.apply(this, [duration, this.options]);
 			if(this.options.refresh ) {
-				$(this.options.target).empty();
-console.log("emptying...");
+				var tt=$(this.options.target+" a.reading").remove();
 			}	
 			$(this.options.target).append(text);
 			text=this.options.callbacks.displayLong.apply(this, [duration, this.options]);
@@ -134,6 +133,7 @@ console.log("emptying...");
 		}
 	};
 
+// if you replace these, please keep the <a class="reading">
 	function f1(duration, param) {
 		duration=Math.round(duration/60);
 		if(param.linkTo) {
