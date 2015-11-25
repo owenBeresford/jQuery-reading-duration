@@ -87,12 +87,13 @@ These are the options that are currently supported:
 				var tt=$(this.options.target+" a.reading").remove();
 			}	
 			$(this.options.target).append(text);
-			text=this.options.callbacks.displayLong.apply(this, [duration, this.options]);
-			if(this.options.refresh ) {
-				$(this.options.injectedID).remove();
+			if(! this.options.linkTo) {
+				text=this.options.callbacks.displayLong.apply(this, [duration, this.options]);
+				if(this.options.refresh ) {
+					$(this.options.injectedID).remove();
+				}
+				$('body').append(text);
 			}
-			$('body').append(text);
-			
 			return this;	
 		}
 
