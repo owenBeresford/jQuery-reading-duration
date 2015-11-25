@@ -55,7 +55,7 @@ These are the options that are currently supported:
 	 * @access public
 	 * @return <object>
 	 */
-	$.readingImpl = function(el, options) {
+	$.readingImpl = function(options) {
 // msie 8
 		if (window.attachEvent && !window.addEventListener) {
 			if(options.debug) {
@@ -70,9 +70,7 @@ These are the options that are currently supported:
 		 * @param array options 
 		 * @return <self>
 		 */
-		function ReadingDuration(el, options) {
-			this.$el  = $(el);
-			this.el   = el;
+		function ReadingDuration( options) {
 // http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
 	        this.options = $.extend({}, $.readingImpl.defaultOptions, options);
 			
@@ -98,7 +96,7 @@ These are the options that are currently supported:
 			return this;	
 		}
 
-	    return new ReadingDuration(el, options);
+	    return new ReadingDuration( options);
 	};
 
 // pls see doc header 
