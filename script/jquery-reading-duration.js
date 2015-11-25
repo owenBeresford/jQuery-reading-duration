@@ -148,7 +148,7 @@ These are the options that are currently supported:
 	function f2(duration, param) {
 		duration=Math.round(duration/60);
 		
-		return "<div id=\""+param.injectionID+"\"> Author needs to add more text here.  </div>";
+		return "<div id=\""+param.injectedID+"\" class=\"reading\"> Author needs to add more text here.  </div>";
 	}
 
 }(jQuery));
