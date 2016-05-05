@@ -1,0 +1,8 @@
+{
+  "name": "jquery-reading-time",
+  "version": "1.2.0",
+  "homepage": "https://github.com/owenBeresford/jquery-reading-time",
+  "description": "A very simple plugin to display estimated reading time of an article.",
+  "main": "jquery-reading-duration.js",
+  "license": "Affero GPL"
+}
