@@ -38,7 +38,7 @@ function test_impl() {
 	ok( typeof jQuery.fn.readingDuration ==='function', "module loaded");
 	ok( jQuery().jquery === '1.11.1', "jquery loaded");
 
-	var $unit = jQuery.readingImpl(null, opts);
+	var $unit = jQuery.readingImpl( opts);
 	ok( typeof $unit ==='object', "Have an object" );
 // not testable, hidden type
 //	ok( $unit instanceof ReadingImpl, "Have correct object" );
@@ -48,7 +48,7 @@ function test_impl() {
 	
 	$('.lotsOfWords').append("df dg dfgdd dfd dhdz fhdfh hz zdnzd hz hdh hdd zdf hdh dfgad agga dg agafg afg  adfgad gadfg  adgadf  afg fa adf gadfga dfg a adha ad hhsh ahah hath trjah  jsjthhs fhgh shsfg hshsf hshfjsrfj dfsdfsd gdf gagadfga g dfgad fgadfgaa dfgad fgadf gadf adf ad f I read advanced tech blogs, written by people similar to me. I gain perspective on this. I note that time to read the article is quite useful, so I have mocked up a tool to supply this. This is the first iteration, I may add more metrics to the output in future. My inspiration is deep and Meduim, although I am sure other sites do the same thing. For authorship, I would advise using a article content-assistance tool, rather than my simple notes. Some examples are Hemingway App, Desk (mac only), XXX. These are a more general solution to not having spent fifteen years grinding out text everyday. If you are using Wordpress, there is a plugin inside that framework.  Model The average reading speed is quoted as being between 250 and 300 words per minute 1 2 3 4. There is a “early web” service that claims to improve speeding reading ability 5. My casual survey did not find any breakdown by subject, Fogg value, nationality, primary or secondary language status, or educational attainment of the reader. For a more comprehensive tool this analysis is required. In my personal case the biggest routine variance is my fatique and the language of the text. I suspect but would be very careful in stating, that some languages are better designed for volume data transfer than others.gd fadfadfadf sdf hsd fhs hs fghs fhsfg hsfhshsshsfg hsfh sfg hshsfg hshs hsfgh ahsdf ahsfghsdfhs fgh  sdffFASD ADFADFHAFHHSFGHSFGHSFHS Hfgs hfgjfghs hsfgjsfjsf js jsfgsfgsfgjs fgjsfgjs sfjgjgjhfgas gsfgsjfgjs js sjsgjhsfgj sjs fjsfgjsfgsfgjs gsfg sgsfg sfghshahaha hahah aahahadhadfha da dadha ha ha hah aha dh hs hjsjh hsfghsfghsfg hsfghs fhsf haha hah ahsfhs  hsfjsf jsfgjs fjsf jsfjs  jsjs jsdj");
 	opts['refresh']=1; 
-	var $unit = jQuery.readingImpl(null, opts);
+	var $unit = jQuery.readingImpl( opts);
 	ok( $('#shareGroup a').text().match(/Reading time: [0-9]+m/g), "Have correct text on redraw");
 	ok( $('#shareGroup a').text().match(/Reading time: [0-9]+m/g).length==1, " have No dups");
 

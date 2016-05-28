@@ -80,7 +80,14 @@ These are the options that are currently supported:
 							.length)/this.options.wordPerMin * 60;
 			duration += $(this.options.dataLocation).find('img').length * 12;
 			// extend to pull CSS background-image 's, but that is quite slow with current jQuery
-			
+			if(this.options.codeSelector &&
+				$(this.options.codeSelector).text() ) {
+				duration += $(this.options.codeSelector)		
+							.text()
+							.match(/\b[^ (),;.\t\n]{3,}\b/g)
+							.length*2 /this.options.wordPerMin * 60;
+			}
+	
 			this.options.injectedID="id"+new Date().getTime()/1000;
 			var text=this.options.callbacks.displayShort.apply(this, [duration, this.options]);
 			if(this.options.refresh ) {
@@ -109,6 +116,7 @@ These are the options that are currently supported:
 		target:'#shareGroup',
 		injectedID:'',
 		wordPerMin:275, 
+		codeSelector:'pre[class="source"],pre[class="code"]',
 		refresh:0,
 		callbacks:{
 			'displayShort':f1,
